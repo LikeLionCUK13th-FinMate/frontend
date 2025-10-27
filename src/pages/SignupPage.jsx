@@ -117,9 +117,7 @@ export default function SignupPage() {
             </select>
           </div>
         </div>
-        
       </div>
-
       <button type="submit" className={`${styles.btn} ${styles.nextBtn}`} disabled={isNextDisabled} onClick={() => navigate("/survey")}>다음</button>
     </div>
   );

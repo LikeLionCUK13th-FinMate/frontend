@@ -31,13 +31,14 @@ export default function SignupSurvey() {
             id: "keyword",
             question: ["더 많은 정보를 알고 싶은\n", "금융 키워드", "를 ", "선택해주세요"],
             options: [
-                
+                "예금", "적금", "ETF", "부동산", "국내투자", "해외투자" // 임시
             ],
         },
     ], []);
 
     const [step, setStep] = useState(0);
     const [answers, setAnswers] = useState({});
+    const [isComplete, setIsComplete] = useState(false);
 
     const current = steps[step];
     const selected = answers[current.id] ?? "";
@@ -53,10 +54,35 @@ export default function SignupSurvey() {
         if (!isLast) {
             setStep((s) => s + 1);
         } else {
-            navigate("/login");
+            setIsComplete(true);
         }
     };
 
+    // 완료 화면
+    if (isComplete) {
+        return (
+            <div className={styles.container} >
+                <div className={styles.completeBox}>
+                    <img src="/success.png" alt="회원가입 완료"/>
+                    
+                    <div className={styles.textBox}>
+                        <p className={styles.completeTitle}><span>회원가입</span>이 <span>완료</span>되었어요!</p>
+                        <p className={styles.completeText}>편하게 대화할 수 있는</p>
+                        <p className={styles.completeText}>금융 친구가 되어드릴게요</p>
+                    </div>
+                    <button
+                        type="button"
+                        className={styles.btn}
+                        onClick={() => navigate("/")}
+                    >
+                        바로 로그인하기
+                    </button>
+                </div>
+            </div>
+        );
+    }
+
+    // 설문 화면
     return (
         <div className={styles.container}>
             <p className={styles.pageTitle}>회원가입</p>
