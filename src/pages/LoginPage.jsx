@@ -7,24 +7,50 @@ export default function LoginPage() {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
-  const mockUser = { id: "test", pw: "1234" };
 
   useEffect(() => {
-    if (id && pw) {
-      setIsDisabled(false); //로그인 버튼 활성화
-    } else {
-      setIsDisabled(true); //비활성화
-    }
+    setIsDisabled(!(id && pw));
   }, [id, pw])
 
-  function handleLogin() {
-    if (id === mockUser.id && pw === mockUser.pw) {
-      alert("Mock User 로그인 성공!");
+  async function handleLogin() {
+    try {
+      const res = await fetch("/users/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: id, password: pw }),
+      });
+
+      let payload = {};
+      try {
+        payload = await res.json();
+      } catch {
+        payload = {};
+      }
+
+      if (!res.ok) {
+        const msg = payload.message || (res.status === 401
+          ? "아이디 또는 비밀번호가 올바르지 않습니다."
+          : "로그인 중 오류가 발생했습니다.");
+        alert(msg);
+        return;
+      }
+
+      // 토큰 저장: token이 data에 들어있다고 가정
+      const token = payload.data || payload.token;
+      if (!token) {
+        alert("로그인 응답에 토큰이 없습니다.");
+        return;
+      }
+
+      localStorage.setItem("token", token);
+      alert("로그인 성공!");
       navigate("/chatbot");
-    } else {
-      alert("아이디 또는 비밀번호가 틀렸습니다.");
+    } catch (err) {
+      console.error("로그인 요청 실패:", err);
+      alert("서버 연결 실패");
     }
   }
+
 
   return (
     <div className="container">
