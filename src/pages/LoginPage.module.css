@@ -1,0 +1,77 @@
+.serviceName {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #54C5B9;
+}
+
+.serviceSlogan {
+    font-size: 24px;
+    font-weight: 500;
+    color: #9DD1CD;
+}
+
+.loginBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.inputBox {
+    width: 295px;
+    height: 54px;
+    padding: 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 15px;
+    font-size: 23px;
+    color: #A4A4A4;
+    background-color: #EFEFEF;
+}
+
+.inputBox::placeholder {
+    color: #A4A4A4;
+}
+
+.btn {
+    width: 175px;
+    height: 54px;
+    margin-top: 10px;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 23px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #54C5B9;
+}
+
+.loginBtn {
+    margin-top: 30px;
+}
+
+.btn:active {
+    background-color: #4aa59c;
+}
+
+.btn:disabled {
+    cursor: auto;
+}
+
+.btn:disabled:active {
+    background-color: #54C5B9;
+}
+
+.signupGuide {
+    font-size: 17px;
+    font-weight: 700;
+    color: #9DD1CD;
+}
+
+.signupBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
