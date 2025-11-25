@@ -1,0 +1,164 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 480px;
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: #fff;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+
+  position: relative;
+  padding-bottom: 150px;
+}
+
+.pageTitle {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+.questionBox {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.question {
+  font-size: 23px;
+  font-weight: bold;
+  white-space: pre-line;
+}
+
+.question span {
+  color: #54c5b9;
+}
+
+.highlightText {
+  color: #50c3b5;
+  border-bottom: 2px solid #50c3b5;
+  padding-bottom: 1px;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.label {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #000000;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.chipButton {
+  padding: 13px 15px;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: #efefef;
+  color: #000000;
+}
+
+.chipSelected {
+  background-color: #54c5b9;
+  color: #fff;
+}
+
+.tagsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  min-height: 30px;
+}
+
+.tag {
+  background-color: #54c5b9;
+  color: #fff;
+  padding: 13px 15px;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+}
+
+.tagCloseBtn {
+  background: transparent;
+  border: none;
+  color: #2F9086;
+  margin-left: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 10px;
+}
+
+.input {
+  width: 213px;
+  padding: 15px;
+  border-radius: 15px;
+  border: none;
+  background-color: #EFEFEF;
+  font-size: 20px;
+  outline: none;
+}
+
+.keywordBtn {
+  padding: 0 15px;
+  background-color: #54c5b9;
+  color: #FAFAFA;
+  border: none;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.nextButton {
+  width: 316px;
+  height: 50px;
+  margin-top: 10px;
+  color: #FAFAFA;
+  border: none;
+  border-radius: 15px;
+  font-size: 23px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #54c5b9;
+}
+
+.skipButton {
+  background: none;
+  border: none;
+  color: #a0a0a0;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
