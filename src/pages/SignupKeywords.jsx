@@ -1,9 +1,7 @@
 import { useState } from "react";
 import styles from "./SignUpKeywords.module.css";
 
-// 부모(SignupSurvey)에서 전달받은 onNext, onSkip 함수 사용
 const SignupKeywords = ({ onNext, onSkip }) => {
-  // 상태 관리
   const [selectedRecommends, setSelectedRecommends] = useState([]);
   const [myKeywords, setMyKeywords] = useState([]);
   const [inputValue, setInputValue] = useState("");
@@ -59,7 +57,7 @@ const SignupKeywords = ({ onNext, onSkip }) => {
         </p>
       </div>
 
-      {/* 1. 추천 키워드 섹션 */}
+      {/* 추천 키워드 섹션 */}
       <div className={styles.section}>
         <p className={styles.label}>추천 키워드</p>
         <div className={styles.gridContainer}>
@@ -80,7 +78,7 @@ const SignupKeywords = ({ onNext, onSkip }) => {
         </div>
       </div>
 
-      {/* 2. 나의 키워드 섹션 */}
+      {/* 나의 키워드 섹션 */}
       <div className={styles.section}>
         <p className={styles.label}>나의 키워드</p>
         <div className={styles.tagsContainer}>

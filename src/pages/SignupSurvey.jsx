@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useMemo } from "react";
 import styles from "./SignupPage.module.css";
-import SignUpKeywords from "./SignupKeywords";
+import SignupKeywords from "./SignupKeywords";
+import { registerUser } from "../api/auth";
 
 export default function SignupSurvey() {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ export default function SignupSurvey() {
         ],
       },
       {
-        id: "keyword"
+        id: "keyword",
       },
     ],
     []
@@ -41,33 +42,44 @@ export default function SignupSurvey() {
   const [isComplete, setIsComplete] = useState(false);
 
   const current = steps[step];
-
-  // 1, 2단계용 선택 값
   const selected = answers[current.id] ?? "";
 
-  // 다음 단계로 이동하는 공통 함수
   const goNext = (data) => {
-    // 각 단계의 데이터를 answers에 병합
-    setAnswers((prev) => ({ ...prev, [current.id]: data }));
+    const newAnswers = { ...answers, [current.id]: data };
+    setAnswers(newAnswers);
 
     if (step < steps.length - 1) {
       setStep((s) => s + 1);
-    } else {
-      setIsComplete(true);
+      return;
     }
+
+    // 마지막 단계(키워드) 완료 -> 회원가입 수행
+    submitRegistration(newAnswers);
   };
 
-  // 1, 2단계에서 '다음' 버튼 클릭 핸들러
   const handleRadioNext = () => {
     goNext(selected);
   };
 
-  // 1, 2단계 선택 핸들러
   const handleRadioSelect = (value) => {
     setAnswers((prev) => ({ ...prev, [current.id]: value }));
   };
 
-  // 완료 화면
+  async function submitRegistration(allAnswers) {
+    console.log("설문 답변:", allAnswers);
+
+    try {
+      // registerUser가 세션 스토리지 처리와 매핑을 모두 담당
+      await registerUser(allAnswers);
+
+      setIsComplete(true);
+      alert("회원가입 완료! 로그인 페이지로 이동합니다.");
+      navigate("/login");
+    } catch (err) {
+      alert(err.message || "회원가입 중 오류가 발생했습니다.");
+    }
+  }
+
   if (isComplete) {
     return (
       <div className={styles.container}>
@@ -94,14 +106,15 @@ export default function SignupSurvey() {
 
   if (current.id === "keyword") {
     return (
-      <SignUpKeywords
-        onNext={(selectedKeywords) => goNext(selectedKeywords)}
-        onSkip={() => goNext([])} // 건너뛰기 시 빈 배열 저장 후 다음으로
-      />
+      <div className={styles.container}>
+        <SignupKeywords
+          onNext={(selectedKeywords) => goNext(selectedKeywords)}
+          onSkip={() => goNext([])}
+        />
+      </div>
     );
   }
 
-  // 기본 설문 화면 (1단계, 2단계)
   return (
     <div className={styles.container}>
       <p className={styles.pageTitle}>회원가입</p>
