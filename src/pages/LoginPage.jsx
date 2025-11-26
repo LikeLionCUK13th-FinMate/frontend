@@ -35,8 +35,7 @@ export default function LoginPage() {
         return;
       }
 
-      // 토큰 저장: token이 data에 들어있다고 가정
-      const token = payload.data || payload.token;
+      const token = payload.data
       if (!token) {
         alert("로그인 응답에 토큰이 없습니다.");
         return;
@@ -70,9 +69,6 @@ export default function LoginPage() {
         <p className={styles.signupGuide}>핀메이트가 처음이신가요?</p>
         <button className={styles.btn} onClick={() => navigate("/signup")}>회원가입</button>
       </div>
-
-      <button onClick={() => navigate("/mypage")}>마이페이지</button>
-      <button onClick={() => navigate("/chatbot")}>챗봇</button>
     </div>
   );
 }
