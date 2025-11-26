@@ -1,0 +1,160 @@
+.pageContainer {
+  max-width: 412px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #FFFFFF;
+  padding-top: 150px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 헤더 스타일 */
+.header {
+  padding: 10px 16px; 
+}
+
+/* 폼 스타일 (내용 영역과 저장 버튼을 수직 배치) */
+.form {
+  flex-grow: 1;
+  padding: 0 20px 20px; /* 좌우 20px 패딩만 유지 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 키워드 섹션과 등록 그룹을 감싸는 영역 */
+.contentArea {
+  /* flex-grow 제거 */
+}
+
+/* 키워드 섹션 (추천/나의 키워드) */
+.keywordSection {
+  margin-bottom: 25px; 
+  /* 내부 패딩 제거: form의 20px 패딩을 사용하도록 */
+  /* padding-left: 28px; */
+  /* padding-right: 28px; */
+}
+
+/* 섹션 타이틀 (추천 키워드 / 나의 키워드) */
+.sectionTitle {
+  font-family: 'Inria Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000000;
+  margin-bottom: 15px;
+}
+
+/* 키워드 목록 (Flexbox로 가로 배치) */
+.keywordList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* 키워드 태그 버튼 공통 스타일 */
+.keywordTag {
+  height: 50px;
+  padding: 0 18px; 
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-bottom: 15px;
+  font-family: 'Inria Sans', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+/* 선택되지 않은 키워드 (기본 배경) */
+.keywordButton {
+  background: #EFEFEF;
+  color: #000000;
+}
+
+/* 선택된 키워드 (활성화 배경) */
+.keywordButtonActive {
+  background: #54C5B9;
+  color: #FAFAFA;
+}
+
+/* 나의 키워드 삭제 아이콘 스타일 */
+.deleteIcon {
+  margin-left: 8px;
+  color: #2F9086; 
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* --- 등록 그룹 스타일 --- */
+.registerGroup {
+  display: flex;
+  gap: 10px; 
+  margin-top: 30px;
+  /* 내부 패딩 제거: form의 20px 패딩을 사용하도록 */
+  /* padding-left: 28px; */
+  /* padding-right: 28px; */
+}
+
+/* 관심 키워드 입력 필드 */
+.keywordInput {
+  flex-grow: 1; 
+  height: 50px;
+  background: #EFEFEF;
+  border-radius: 15px;
+  border: none;
+  padding: 0 20px;
+  font-family: 'Inria Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #A4A4A4;
+}
+
+/* 등록하기 버튼 */
+.registerButton {
+  width: 94px;
+  height: 50px;
+  background: #54C5B9;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  
+  flex-shrink: 0;
+  min-width: 94px; 
+  
+  font-family: 'Inria Sans', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  color: #FAFAFA;
+  white-space: nowrap;
+}
+
+/* --- 저장 버튼 스타일 --- */
+.saveButton {
+  width: 316px; 
+  height: 50px;
+  background: #54C5B9;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  align-self: center; 
+  margin-top: 90px;
+  margin-bottom: 20px;
+  font-family: 'Inria Sans', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 28px;
+  color: #FAFAFA;
+}
