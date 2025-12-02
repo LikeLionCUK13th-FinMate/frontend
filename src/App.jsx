@@ -8,6 +8,7 @@ import ModKnowledgeLevelPage from "./pages/ModKnowledgeLevelPage"; // 개인정�
 import ManageKeywordsPage from "./pages/ManageKeywordsPage"; // 개인정보 - 관심 키워드 관리
 import TermsNConditionsPage from "./pages/TermsNConditionsPage"; // 개인정보 - 약관 보기
 
+import SignupSurvey from "./pages/SignupSurvey";
 import "./index.css";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/mypage/mod-knowledge-level" element={<ModKnowledgeLevelPage />} />
           <Route path="/mypage/manage-keywords" element={<ManageKeywordsPage />} />
           <Route path="/mypage/terms-n-conditions" element={<TermsNConditionsPage />} />
+          <Route path="/survey" element={<SignupSurvey />} />
         </Routes>
       </Router>
     </>

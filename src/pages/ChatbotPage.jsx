@@ -1,8 +1,109 @@
+import { useEffect, useRef, useState } from "react";
+import styles from "./ChatbotPage.module.css";
+
+const formatDate = (ts) => {
+  const d = new Date(ts);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}.${m}.${day}`;
+};
+
+const formatTime = (ts) => {
+  return new Date(ts).toLocaleTimeString("ko-KR", {
+    hour12: false,
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+};
+
 export default function ChatbotPage() {
+  const [messages, setMessages] = useState([ // 초기 메세지
+    { id: 1, role: "bot", text: "안녕하세요! 무엇을 도와드릴까요?", createdAt: new Date().toISOString() }]);
+  const [input, setInput] = useState(""); // 유저가 입력한 글
+  const listRef = useRef(null);
+  const endRef = useRef(null);
+
+  // 임시 유저 데이터
+  const user = {
+    nickname: "닉네임",
+    // image: ""
+  };
+
+  useEffect(() => {
+    endRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  const send = () => {
+    const text = input.trim();
+    if (!text) return;
+    const now = new Date().toISOString();
+    const userMsg = { id: Date.now(), role: "user", text, createdAt: now };
+    setMessages((prev) => [...prev, userMsg]);
+    setInput("");
+
+    // 임시 응답
+    setTimeout(() => {
+      const botMsg = {
+        id: Date.now() + 1,
+        role: "bot",
+        text: `“${text}”에 대해 더 자세히 설명해 드릴게요!`,
+        createdAt: new Date().toISOString()
+      };
+      setMessages((prev) => [...prev, botMsg]);
+    }, 600);
+  };
+
+  const rows = [];
+  let lastDate = "";
+  messages.forEach((m) => {
+    const dateHeader = formatDate(m.createdAt);
+    if (dateHeader !== lastDate) {
+      rows.push(
+        <div key={`date-${dateHeader}`} className={styles.dateDivider}>
+          <span className={styles.dateChip}>{dateHeader}</span>
+        </div>
+      );
+      lastDate = dateHeader;
+    }
+
+    rows.push(
+      <div key={m.id} className={`${styles.row} ${m.role === "user" ? styles.me : styles.bot}`}>
+        {m.role === "bot" && (
+          <img src="/chatbot.png" alt="챗봇" className={styles.botImage} />
+        )}
+        <div className={styles.bubbleWrapper}>
+          <div className={styles.bubble}>{m.text}</div>
+          <span className={styles.time}>{formatTime(m.createdAt)}</span>
+        </div>
+      </div>
+    );
+  });
+
   return (
-    <div className="container">
-      <h2>챗봇</h2>
-      <p>여기는 챗봇 화면입니다.</p>
+    <div className={styles.container}>
+      <header className={styles.header}>
+        <img src={user.image ? user.image : "/profile.png"} alt="image" className={styles.image} />
+        <p className={styles.nickname}>{user.nickname}</p>
+      </header>
+
+      <main className={styles.chatArea} ref={listRef}>
+        {rows}
+        <div ref={endRef} />
+      </main>
+
+      <form className={styles.inputBar} onSubmit={(e) => { e.preventDefault(); send(); }}>
+        <textarea
+          className={styles.input}
+          placeholder="메시지를 입력하세요"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          rows={1}
+        />
+        <button className={styles.send} type="submit" disabled={!input.trim()}>
+          전송
+        </button>
+      </form>
     </div>
   );
 }
