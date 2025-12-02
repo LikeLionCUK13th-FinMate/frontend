@@ -1,3 +1,5 @@
+const IS_MOCK = true;
+
 // 매핑
 function mapLevelToEnum(label) {
   if (!label) return null;
@@ -41,6 +43,10 @@ export async function registerUser(surveyAnswers) {
     investmentTendency: mapTendencyToEnum(surveyAnswers.tendency),
     currentMainConcerns: null,
   };
+
+  if (IS_MOCK) {
+    return;
+  }
 
   // 3. API 호출
   const res = await fetch(`${baseUrl}/users/register`, {

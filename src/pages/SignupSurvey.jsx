@@ -73,8 +73,6 @@ export default function SignupSurvey() {
       await registerUser(allAnswers);
 
       setIsComplete(true);
-      alert("회원가입 완료! 로그인 페이지로 이동합니다.");
-      navigate("/login");
     } catch (err) {
       alert(err.message || "회원가입 중 오류가 발생했습니다.");
     }

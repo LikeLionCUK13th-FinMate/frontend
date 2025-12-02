@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import styles from "./SignupPage.module.css";
 
+const IS_MOCK = true;
+
 export default function SignupPage() {
   const navigate = useNavigate();
 
@@ -47,6 +49,31 @@ export default function SignupPage() {
 
     setIsNextDisabled(!allFilled);
   }, [name, id, pw, confirmPw, birth, isMatch]);
+
+  async function handleCheckId() {
+    if (IS_MOCK) {
+      alert("사용 가능한 아이디입니다.");
+      return;
+    }
+
+    try {
+      const res = await fetch("/users/check-id", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: id.trim() }),
+      });
+      const data = await res.json();
+      
+      if (res.ok) {
+        alert("사용 가능한 아이디입니다.");
+      } else {
+        alert(data.message || "이미 사용 중인 아이디입니다.");
+      }
+    } catch (err) {
+      console.error("중복확인 실패:", err);
+      alert("서버 연결 실패");
+    }
+  }
 
   // 기본정보 입력 완료 -> 세션에 저장하고 survey로 이동
   const handleNext = () => {
@@ -99,13 +126,7 @@ export default function SignupPage() {
             <button
               className={styles.btn}
               disabled={isCheckDisabled}
-              onClick={() => {
-                // 중복확인 API가 있는지 백엔드에 확인해봐야 합니다.
-                // 만약 /users/check-duplicate 같은 엔드포인트가 있다면 여기서 호출하세요.
-                alert(
-                  "중복확인 엔드포인트가 없으면 서버에서 가입 시 중복을 검증합니다."
-                );
-              }}
+              onClick={handleCheckId}
             >
               중복확인
             </button>
