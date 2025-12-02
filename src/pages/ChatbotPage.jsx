@@ -55,7 +55,7 @@ export default function ChatbotPage() {
           });
         }
       } catch (error) {
-        console.error("유저 정보를 불러오는데 실패했습니다:", error);
+        // console.error("유저 정보를 불러오는데 실패했습니다:", error);
         // 에러 시 기본값 다시 설정
         setUser({
           nickname: "사용자",
@@ -84,7 +84,7 @@ export default function ChatbotPage() {
       const botMsg = {
         id: Date.now() + 1,
         role: "bot",
-        text: `“${text}”에 대해 더 자세히 설명해 드릴게요!`,
+        text: "ETF는 여러 종목을 한 바구니처럼 묶어서 만든 '분산 투자'용 상품이고, 주식처럼 거래시간에 사고팔 수 있어요.\n초보자도 시장 전체 흐름에 투자하는 데 활용할 수 있지만, 변동성과 수수료도 함께 고려해야 해요.\n한국 시장 기준으로 지수 추종형·테마형 등 종류가 다양해요.\n\n어떤 관점에서 ETF를 이해하고 싶나요? (예: 구조, 위험, 종류, 사고파는 법 등)",
         createdAt: new Date().toISOString(),
       };
       setMessages((prev) => [...prev, botMsg]);
@@ -125,7 +125,14 @@ export default function ChatbotPage() {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <img src={user.image} alt="image" className={styles.image} onClick={() => {navigate("/mypage")}} />
+        <img
+          src={user.image}
+          alt="image"
+          className={styles.image}
+          onClick={() => {
+            navigate("/mypage");
+          }}
+        />
         <p className={styles.nickname}>{user.nickname}</p>
       </header>
 
