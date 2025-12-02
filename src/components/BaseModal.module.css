@@ -1,0 +1,88 @@
+/* ===== 오버레이 ===== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: #00000080; /* 반투명 검정 */
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+}
+
+/* ===== 모달 컨텐츠 (가변 높이) ===== */
+.content {
+  width: 334px;
+  background-color: #C9EBE8F2; /* rgba(201,235,232,0.95) */
+  border-radius: 12px;
+  box-shadow: 0 8px 24px #0000002E;
+  padding: 24px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ===== 타이틀 ===== */
+.title {
+  font-size: 27px;
+  line-height: 33px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+  text-align: center;
+}
+
+/* ===== 본문 (내용이 길어지면 자동 확장) ===== */
+.body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ===== 버튼 영역 ===== */
+.actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 8px;
+}
+
+/* 공통 버튼 */
+.btn {
+  width: 128px;
+  height: 48px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+/* 취소 버튼 */
+.secondary {
+  background-color: #9DD1CDF7;
+  color: #000000;
+}
+
+/* 저장 버튼 */
+.primary {
+  background-color: #54C5B9F7;
+  color: #FAFAFA;
+}
+
+/* 탈퇴용 버튼 등 */
+.danger {
+  background-color: #D92D20;
+  color: #FFFFFF;
+}
+
+/* 반응형 (넓은 화면에서도 중앙 정렬 유지) */
+@media (min-width: 600px) {
+  .content {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

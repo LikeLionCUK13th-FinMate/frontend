@@ -1,0 +1,139 @@
+/* ===== 투자성향 수정 페이지 ===== */
+
+/* 전체 페이지 */
+/* .modinvesttypepage {
+  width: 100%;
+  max-width: 412px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+} */
+
+.modinvesttypepage {
+  width: 100%;
+  max-width: 412px;
+  margin: 0 auto;
+}
+
+/* 헤더 */
+.modinvesttypepage__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 56px;
+  margin-top: 10px;
+}
+
+.modinvesttypepage__header h2,
+.modinvesttypepage__header .section__title {
+  font-size: 27px;
+  line-height: 33px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+}
+
+/* ===== 폼 ===== */
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  padding: 40px 32px;
+}
+
+/* 필드셋 */
+.fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 라디오 리스트 */
+.list {
+  list-style: none;
+  display: grid;
+  gap: 26px;
+  margin: 0;
+  padding: 0;
+}
+
+/* 각 라벨 그룹 */
+.option {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* 기본 라디오 숨기기 */
+.radio {
+  display: none;
+}
+
+/* 커스텀 원형 라디오 */
+.customRadio {
+  width: 21px;
+  height: 21px;
+  border: 2px solid #9dd1cd;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+/* 선택 시 내부 점 표시 */
+.radio:checked + .customRadio::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background-color: #54c5b9;
+}
+
+/* 라벨 텍스트 */
+.labelText {
+  font-family: "Inria Sans", sans-serif;
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 28px;
+  color: #000000;
+  display: flex;
+  align-items: center;
+}
+
+/* ===== 저장 버튼 ===== */
+.saveButton {
+  width: 316px;
+  height: 50px;
+  margin: 200px auto 40px;
+  background: #54c5b9;
+  border-radius: 15px;
+  border: none;
+  font-family: "Inria Sans", sans-serif;
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 28px;
+  color: #fafafa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.saveButton:hover {
+  background: #4ab3a8;
+}
+
+/* 반응형 */
+@media (min-width: 600px) {
+  .modinvesttypepage {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

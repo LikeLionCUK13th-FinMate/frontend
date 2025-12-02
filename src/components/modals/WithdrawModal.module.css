@@ -1,0 +1,23 @@
+.text {
+  font-size: 20px;
+  color: #000000;
+  text-align: center;
+}
+
+.input {
+  width: 291px;
+  height: 48px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  background-color: #fffffff7;
+  color: #000000;
+  font-size: 20px;
+  line-height: 24px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  display: block;
+  margin: 0 auto;
+}
+
+.input::placeholder { color: #a4a4a4; }

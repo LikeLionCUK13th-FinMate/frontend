@@ -1,0 +1,55 @@
+.text {
+  font-size: 20px;
+  color: #000000;
+  text-align: center;
+}
+
+.previewWrap {
+  display: grid;
+  place-items: center;
+  margin: 8px 0 12px;
+}
+
+.previewImage {
+  width: 150px;
+  height: 150px;
+  border-radius: 9999px;
+  object-fit: cover;
+  border: 3px solid #54c5b9;
+  background-color: #f5f5f5;
+}
+
+/* 파일 선택 버튼 단독 표시 */
+.file {
+  display: block;
+  margin: 12px auto 0;
+  width: 140px;
+  height: 48px;
+  border: none;
+  border-radius: 12px;
+  background: #54c5b9;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  appearance: none;
+  overflow: hidden;
+}
+
+.file::-webkit-file-upload-text { visibility: hidden; }
+
+.file::file-selector-button,
+.file::-webkit-file-upload-button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 12px;
+  background: #54c5b9;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.file::file-selector-button:hover { background: #46b0a6; }
