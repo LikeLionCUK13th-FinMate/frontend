@@ -1,4 +1,5 @@
 .input {
+  font-family: "Pretendard", sans-serif;
   width: 291px;
   height: 48px;
   border-radius: 12px;
@@ -14,4 +15,7 @@
   margin: 0 auto;
 }
 
-.input::placeholder { color: #a4a4a4; }
+.input::placeholder {
+  font-family: "Pretendard", sans-serif;
+  color: #a4a4a4;
+}

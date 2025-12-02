@@ -4,7 +4,6 @@
   min-height: 100vh;
   height: 100vh;
   background: #FFFFFF;
-  padding-top: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -26,16 +25,15 @@
   margin-bottom: 70px;
 }
 .termSection:first-child {
-  margin-top: 50px;
 }
 
 .termTitle {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Pretendard', sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
   line-height: 1.35;
-  color: #878787;
+  color: #000000;
   margin-bottom: 25px;
   width: 100%;
 }
@@ -44,11 +42,11 @@
 }
 
 .termLine {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Pretendard', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.5;
-  color: #C8C8C8; 
+  color: #878787; 
   margin-bottom: 13px;
 }

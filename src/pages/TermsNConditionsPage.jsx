@@ -1,7 +1,6 @@
 import styles from "./TermsNConditionsPage.module.css";
 import GoBack from "../components/GoBack.jsx";
 
-// 가상 약관 데이터
 const termsData = [
     {
         title: "제 1조: 서비스 이용 약관 (필수)",

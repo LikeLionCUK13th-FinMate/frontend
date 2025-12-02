@@ -1,28 +1,24 @@
-/* @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+/* Pretendard CDN import */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 
+/* 기본 Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Pretendard";
-} */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
   overflow: hidden;
+  font-family: "Pretendard", sans-serif 
 }
 
 body {
   background-color: #f0f2f5;
 }
 
+/* 메인 container */
 .container {
-  width: 480px;               /* 모바일 화면 고정 */
-  max-width: 100%;             /* 브라우저가 좁을 경우 100%로 줄어듬 */
-  margin: 0 auto;              /* 데스크톱 중앙 정렬 */
+  width: 480px;
+  max-width: 100%;
+  margin: 0 auto;
   padding: 16px;
   min-height: 100vh;
   display: flex;
@@ -30,5 +26,5 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #fff;
-  overflow-wrap: break-word;   /* 긴 텍스트 줄바꿈 */
+  overflow-wrap: break-word;
 }

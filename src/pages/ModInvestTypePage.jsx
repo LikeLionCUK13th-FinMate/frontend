@@ -3,7 +3,7 @@ import styles from "./ModInvestTypePage.module.css";
 import GoBack from "../components/GoBack.jsx";
 
 export default function ModInvestTypePage() {
-  const [selected, setSelected] = useState(""); // 선택된 투자성향
+  const [selected, setSelected] = useState("STABLE");
 
   const options = [
     { id: "CONSERVATIVE", label: "안정형" },
@@ -19,27 +19,24 @@ export default function ModInvestTypePage() {
       alert("투자 성향을 선택해주세요.");
       return;
     }
-    // TODO: 백엔드 연동 (선택값 selected 전송)
-    // ex) await saveInvestType(selected)
     alert(`선택된 투자 성향: ${selected}`);
   };
 
   return (
     <div className="container">
-      <div className={styles.modinvesttypepage}>
-        {/* 상단 헤더 */}
-        <header className={styles.modinvesttypepage__header}>
+      <div className={styles.pageContainer}>
+        
+        <header className={styles.header}>
           <GoBack title="투자 성향 수정" />
         </header>
 
-        {/* 선택 폼 */}
         <form className={styles.form} onSubmit={handleSave}>
+
           <fieldset className={styles.fieldset}>
             <ul className={styles.list}>
               {options.map((opt) => (
                 <li key={opt.id} className={styles.item}>
                   <label className={styles.option}>
-                    {/* 실제 라디오 */}
                     <input
                       type="radio"
                       name="investType"
@@ -48,21 +45,20 @@ export default function ModInvestTypePage() {
                       onChange={(e) => setSelected(e.target.value)}
                       className={styles.radio}
                     />
-                    {/* 커스텀 원형 */}
                     <span aria-hidden="true" className={styles.customRadio} />
-                    {/* 텍스트 */}
                     <span className={styles.labelText}>{opt.label}</span>
                   </label>
                 </li>
               ))}
             </ul>
           </fieldset>
-        </form>
-        
-        {/* 하단 저장 버튼 */}
+
           <button type="submit" className={styles.saveButton}>
             저장하기
           </button>
+
+        </form>
+
       </div>
     </div>
   );
