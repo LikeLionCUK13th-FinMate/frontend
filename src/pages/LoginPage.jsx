@@ -2,6 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import styles from "./LoginPage.module.css";
 
+const IS_MOCK = true;
+const MOCK_ACCOUNT = {
+  userId: "test",
+  password: "1234"
+}
+
 export default function LoginPage() {
   const navigate = useNavigate();
   const [id, setId] = useState("");
@@ -13,6 +19,16 @@ export default function LoginPage() {
   }, [id, pw])
 
   async function handleLogin() {
+    if (IS_MOCK) {
+      if (id === MOCK_ACCOUNT.userId && pw === MOCK_ACCOUNT.password) {
+        alert("로그인 성공!");
+        navigate("/chatbot");
+      } else {
+        alert("아이디 또는 비밀번호가 올바르지 않습니다.\n시연용 계정: test / 1234");
+      }
+      return;
+    }
+
     try {
       const res = await fetch("/users/login", {
         method: "POST",
