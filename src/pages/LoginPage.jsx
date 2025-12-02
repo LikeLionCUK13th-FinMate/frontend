@@ -2,6 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import styles from "./LoginPage.module.css";
 
+const IS_MOCK = true;
+const MOCK_ACCOUNT = {
+  userId: "test",
+  password: "1234"
+}
+
 export default function LoginPage() {
   const navigate = useNavigate();
   const [id, setId] = useState("");
@@ -13,6 +19,16 @@ export default function LoginPage() {
   }, [id, pw])
 
   async function handleLogin() {
+    if (IS_MOCK) {
+      if (id === MOCK_ACCOUNT.userId && pw === MOCK_ACCOUNT.password) {
+        alert("로그인 성공!");
+        navigate("/chatbot");
+      } else {
+        alert("아이디 또는 비밀번호가 올바르지 않습니다.\n시연용 계정: test / 1234");
+      }
+      return;
+    }
+
     try {
       const res = await fetch("/users/login", {
         method: "POST",
@@ -35,8 +51,7 @@ export default function LoginPage() {
         return;
       }
 
-      // 토큰 저장: token이 data에 들어있다고 가정
-      const token = payload.data || payload.token;
+      const token = payload.data
       if (!token) {
         alert("로그인 응답에 토큰이 없습니다.");
         return;
@@ -70,9 +85,6 @@ export default function LoginPage() {
         <p className={styles.signupGuide}>핀메이트가 처음이신가요?</p>
         <button className={styles.btn} onClick={() => navigate("/signup")}>회원가입</button>
       </div>
-
-      <button onClick={() => navigate("/mypage")}>마이페이지</button>
-      <button onClick={() => navigate("/chatbot")}>챗봇</button>
     </div>
   );
 }
