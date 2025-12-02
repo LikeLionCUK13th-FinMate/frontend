@@ -108,7 +108,7 @@ export default function MyPage() {
           </div>
 
           <div className={styles.profile__name}>
-            <span className={styles.profile__nickname}>닉네임</span>
+            <span className={styles.profile__nickname}>사용자</span>
             <GoPencil
               className={`${styles["icon-btn"]} ${styles["profile__name-edit"]}`}
               onClick={() => openModal("nickname")}
