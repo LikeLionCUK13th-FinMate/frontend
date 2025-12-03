@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./SignUpKeywords.module.css"; // 대소문자 수정
+import styles from "./SignupKeywords.module.css"; // 대소문자 수정
 
 const SignupKeywords = ({ onNext, onSkip }) => {
   const [selectedRecommends, setSelectedRecommends] = useState([]);
